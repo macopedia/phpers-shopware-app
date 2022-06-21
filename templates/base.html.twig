@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.get('sw-user-language') }}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{{ 'welcome.title'|trans }}{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('assets/css/bootstrap@5.1.3.min.css') }}" rel="stylesheet">
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/bootstrap@5.1.3.min.js') }}"></script>
+        {% endblock %}
+    </head>
+
+    <body onload="sendReadyState()">
+        <div id="page">
+            {% block body %}{% endblock %}
+        </div>
+        <script>
+            function sendReadyState() {
+                window.parent.postMessage('sw-app-loaded', '*');
+            }
+        </script>
+    </body>
+</html>
