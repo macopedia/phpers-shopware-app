@@ -1,6 +1,6 @@
 # PHPers 2022 warsztaty "Jak rozbudowywać i integrować się z SaaS na przykładzie Shopware Apps?"
 
-Repozytorium powstało na podstawie szablonu bazowego Shopware App (https://github.com/shopware/AppTemplate).
+Repozytorium powstało na podstawie szablonu bazowego Shopware App (https://github.com/shopwareLabs/AppExample).
 
 ## Co zawiera bazowa wersja aplikacji
 
