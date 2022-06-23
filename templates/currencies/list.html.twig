@@ -2,6 +2,7 @@
 
 {% block body %}
     <a href="{{ url('currencies_import') }}" class="btn btn-primary" role="button">Import currencies from API</a>
+    <a href="{{ url('currencies_export') }}" class="btn btn-success" role="button">Export currency rates to Shopware</a>
     {% if currencies %}
         <table class="table">
             <thead>
