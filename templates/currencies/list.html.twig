@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ url('currencies_import') }}" class="btn btn-primary" role="button">Import currencies from API</a>
+    {% if currencies %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Currency</th>
+                <th scope="col">Rate</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for currency in currencies %}
+                <tr>
+                    <td>{{ currency.code }}</td>
+                    <td>{{ currency.rate }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <span>No currencies imported, please click "Import currencies from API" button</span>
+    {% endif %}
+{% endblock %}
