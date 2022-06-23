@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\ShopRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -27,6 +29,14 @@ class Shop implements UserInterface
 
     #[ORM\Column(type: 'string', nullable : true)]
     private ?string $secretKey;
+
+    #[ORM\OneToMany(mappedBy: 'shop', targetEntity: Currency::class, cascade: ['persist', 'remove'])]
+    private Collection $currencies;
+
+    public function __construct()
+    {
+        $this->currencies = new ArrayCollection();
+    }
 
     public function getShopId(): string
     {
@@ -115,5 +125,10 @@ class Shop implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getCurrencies(): Collection
+    {
+        return $this->currencies;
     }
 }
