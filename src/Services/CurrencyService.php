@@ -15,10 +15,6 @@ class CurrencyService
 
     const CURRENCIES_API_URL = 'https://api.exchangerate.host/latest';
 
-    /**
-     * @param Shop $shop
-     * @return void
-     */
     public function importCurrencies(Shop $shop): void
     {
         $currencies = $this->getCurrenciesDataFromApi();
@@ -46,7 +42,7 @@ class CurrencyService
         $responseJson = file_get_contents(self::CURRENCIES_API_URL);
         if (false !== $responseJson) {
             $response = json_decode(json: $responseJson, flags: JSON_OBJECT_AS_ARRAY);
-            if ($response->success === true) {
+            if ($response['success'] === true) {
                 return $response;
             }
         }
