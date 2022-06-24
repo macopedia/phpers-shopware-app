@@ -13,8 +13,8 @@ class Currency
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\ManyToOne(targetEntity: Shop::class, inversedBy: 'currencies')]
-    #[ORM\JoinColumn(name: 'shop_id', referencedColumnName: 'shop_id')]
+    #[ORM\ManyToOne(targetEntity: Shop::class, cascade: ['persist', 'remove'], inversedBy: 'currencies')]
+    #[ORM\JoinColumn(name: 'shop_id', referencedColumnName: 'shop_id', onDelete: 'CASCADE')]
     private Shop $shop;
 
     #[ORM\Column(type: 'string')]
